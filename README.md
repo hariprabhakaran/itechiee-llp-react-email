@@ -1,32 +1,34 @@
-iTechiee LLP – Official Website (React + Vite + CSS Modules)
+# iTechiee LLP – Official Website (React + Vite + CSS Modules)
 
-This is the official website for iTechiee LLP, built using React, Vite, and CSS Modules.
-It includes all company sections such as:
+This is the official website for **iTechiee LLP**, built using **React**, **Vite**, and **CSS Modules**.  
+It includes all company sections:
 
-Landing / Hero
+- Home / Hero  
+- About  
+- Services  
+- Projects  
+- Research & Development  
+- Contact (Email sending via EmailJS)  
+- Footer  
 
-About
+The website uses a modern dark-neon UI theme.
 
-Services
+---
 
-Projects
+## Technology Stack
 
-Research & Development
+| Technology | Purpose |
+|-----------|----------|
+| React 18 | UI Components |
+| Vite | Dev Server + Bundler |
+| CSS Modules | Component-scoped styling |
+| EmailJS | Contact form email sending |
 
-Contact (with Email sending support via EmailJS)
+---
 
-Footer
+## Project Structure
 
-The website is fully responsive and styled using the modern dark-neon theme from the design.
-
-🚀 Tech Stack
-Technology	Usage
-React 18	UI Components
-Vite	Development & Bundling
-CSS Modules	Component-scoped styling
-EmailJS	Sending emails from Contact Form
-JavaScript (ES2020+)	App Logic
-📁 Project Structure
+```
 itechiee-llp-react/
 ├── index.html
 ├── package.json
@@ -34,7 +36,7 @@ itechiee-llp-react/
 ├── src/
 │   ├── App.jsx
 │   ├── main.jsx
-│   ├── global.css              # Global styling
+│   ├── global.css
 │   └── components/
 │       ├── Navbar.jsx
 │       ├── Hero.jsx
@@ -44,163 +46,180 @@ itechiee-llp-react/
 │       ├── RnD.jsx
 │       ├── Contact.jsx
 │       ├── Footer.jsx
-│       ├── *.module.css        # CSS Modules for each component
+│       ├── *.module.css
+```
 
-⚙️ Installation & Setup
-1️⃣ Install Node.js
+---
 
-If not installed, download from:
-👉 https://nodejs.org/en/download/prebuilt-installer
+## Installation Instructions
 
-After installation:
+### Step 1: Install Node.js
 
+Download the LTS version from:  
+https://nodejs.org/en/download/prebuilt-installer
+
+Verify installation:
+
+```
 node -v
 npm -v
+```
 
+---
 
-You should see versions like:
+### Step 2: Install project dependencies
 
-node v18 or v20
-npm v9 or v10
-
-2️⃣ Install dependencies
-
-Open a terminal inside the project folder:
-
-cd itechiee-llp-react
+```
 npm install
+```
 
-3️⃣ Run the development server
+---
+
+### Step 3: Run the development server
+
+```
 npm run dev
-
+```
 
 The app will be available at:
 
+```
 http://localhost:5173/
+```
 
-📬 EmailJS Setup (For Contact Form)
+---
 
-The project supports email sending using EmailJS.
+## EmailJS Setup (for the Contact Form)
 
-Follow these steps:
+The Contact form uses **EmailJS** to send emails directly from the client.
 
-Step 1: Create EmailJS Account
-
+### 1. Create EmailJS Account  
 https://www.emailjs.com
 
-Step 2: Add an Email Service
+### 2. Add an Email Service  
+Choose Gmail or SMTP.  
+Get your **SERVICE_ID**.
 
-Choose Gmail or custom SMTP.
+### 3. Create a Template  
+Required template variables:
 
-You will obtain:
-
-SERVICE_ID
-
-Step 3: Create a Template
-
-Template variables needed:
-
+```
 name
 email
 subject
 message
+```
 
+Set the "To" email address as:
 
-Set your receiving email as:
+```
+hariprabhakaran.70@gmail.com
+```
 
-📥 hariprabhakaran.70@gmail.com
+Get your **TEMPLATE_ID**.
 
-You will receive:
+### 4. Get your Public Key  
+From EmailJS → Account → API Keys → Public Key.  
+Get your **PUBLIC_KEY**.
 
-TEMPLATE_ID
-
-Step 4: Get Your Public Key
-
-EmailJS Dashboard → Account → API Keys → Public Key
-
-Step 5: Update Contact.jsx
+### 5. Add EmailJS keys to the project
 
 Open:
 
+```
 src/components/Contact.jsx
-
+```
 
 Replace:
 
+```js
 const SERVICE_ID = "YOUR_EMAILJS_SERVICE_ID";
 const TEMPLATE_ID = "YOUR_EMAILJS_TEMPLATE_ID";
 const PUBLIC_KEY = "YOUR_EMAILJS_PUBLIC_KEY";
+```
 
+With your actual EmailJS keys.
 
-With your actual values.
+---
 
-📦 Build for Production
-npm run build
-
-
-This generates a dist/ folder containing static files.
-
-You can deploy this anywhere:
-
-Netlify
-
-Vercel
-
-GitHub Pages
-
-AWS S3
-
-Apache / Nginx hosting
-
-cPanel hosting
-
-🌐 Deployment Guide
-Deploy to Netlify (Recommended — easiest)
+## Production Build
 
 Run:
 
+```
 npm run build
+```
 
+This generates a `dist/` folder with static production files.
 
-Go to https://app.netlify.com
+---
 
-Click Add new site → Deploy manually
+## Deployment Instructions
 
-Drag and drop the dist/ folder
+You can deploy the built site anywhere:
 
-Done! Your website is live.
+### Deploy to Netlify
 
-Deploy to Vercel
+1. Build project:
+
+```
+npm run build
+```
+
+2. Go to https://app.netlify.com  
+3. Click "Add New Site" → "Deploy manually"  
+4. Upload the `dist/` folder  
+5. Done
+
+---
+
+### Deploy to Vercel
+
+Install Vercel CLI:
+
+```
 npm install -g vercel
+```
+
+Deploy:
+
+```
 vercel
+```
 
+Choose `dist` as the output folder.
 
-Select folder → choose dist/ as output directory.
+---
 
-🧹 Troubleshooting
-❌ 'vite' is not recognized
+## Troubleshooting
 
-Run:
+### Error: `'vite' is not recognized`
+Fix:
 
+```
 npm install
+```
 
+Or run:
 
-Or:
-
+```
 npx vite
+```
 
-❌ "Failed to send" (Contact form)
+---
 
-Possible reasons:
+### Error: “Failed to send. Please try again later.”
+Causes:
 
-EmailJS service/template/public key incorrect
+- Wrong SERVICE_ID / TEMPLATE_ID / PUBLIC_KEY  
+- Template variables mismatch  
+- EmailJS "Allowed Origins" missing (add `http://localhost:5173`)  
+- Using Private Key instead of Public Key  
 
-EmailJS domain whitelist missing:
-Add http://localhost:5173 in EmailJS dashboard
+---
 
-Template variables mismatch
+## Copyright
 
-© Copyright
-
-© iTechiee LLP
+© iTechiee LLP  
 All rights reserved.
+
